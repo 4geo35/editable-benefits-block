@@ -3,6 +3,7 @@
 namespace GIS\EditableBenefitsBlock;
 
 
+use GIS\EditableBenefitsBlock\Livewire\Admin\Types\BenefitsWire;
 use GIS\EditableBlocks\Traits\ExpandBlocksTrait;
 use GIS\Fileable\Traits\ExpandTemplatesTrait;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +32,10 @@ class EditableBenefitsBlockServiceProvider extends ServiceProvider
     protected function addLivewireComponents(): void
     {
         $component = config("editable-benefits-block.customBenefitsComponent");
+        Livewire::component(
+            "ebb-benefits",
+            $component ?? BenefitsWire::class
+        );
     }
 
     protected function expandConfiguration(): void
