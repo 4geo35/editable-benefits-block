@@ -1,5 +1,7 @@
 <?php
 
+use GIS\EditableBenefitsBlock\Templates\BenefitRecord;
+
 return [
     "availableTypes" => [
         "benefits" => [
@@ -8,8 +10,11 @@ return [
             "render" => "ebb::types.benefits",
         ],
     ],
+    "perCol" => 3, // 3,4
     // Admin
     "customBenefitsComponent" => null,
     // Templates
-    "templates" => [],
+    "templates" => [
+        "benefit-record" => BenefitRecord::class,
+    ],
 ];
