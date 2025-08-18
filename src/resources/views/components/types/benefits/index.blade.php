@@ -1,14 +1,25 @@
 @props(["block", "isFullPage" => true])
 @if ($block->items->count())
-    @php($perCol = config("editable-benefits-block.perCol"))
+    @php
+        $perCol = config("editable-benefits-block.perCol");
+        $hasGridImage = false;
+        if ($isFullPage) {
+            $gridClass = "lg:w-1/3";
+            if ($perCol === 4) { $gridClass .= " xl:w-1/4"; }
+        } else {
+            $gridClass = "";
+        }
+    @endphp
+
     @if ($block->render_title)
         <x-tt::h2 class="mb-indent-half">{{ $block->render_title }}</x-tt::h2>
     @endif
     <div class="row">
-        @php($hasGridImage = false)
         @foreach($block->items as $item)
-            <div class="col w-full md:w-1/2 lg:w-1/3 {{ $perCol === 4 ? 'xl:w-1/4' : '' }} mb-indent">
-                @if (!$hasGridImage && $item->recordable->image_id) @php($hasGridImage = true) @endif
+            @if (!$hasGridImage && $item->recordable->image_id) @php($hasGridImage = true) @endif
+        @endforeach
+        @foreach($block->items as $item)
+            <div class="col w-full md:w-1/2 {{ $gridClass }} mb-indent">
                 <x-ebb::types.benefits.item :$item :$hasGridImage />
             </div>
         @endforeach
