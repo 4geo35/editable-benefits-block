@@ -12,7 +12,7 @@
     @endphp
 
     @if ($block->render_title)
-        <x-tt::h2 class="mb-indent-half">{{ $block->render_title }}</x-tt::h2>
+        <x-tt::h2 class="mb-indent">{{ $block->render_title }}</x-tt::h2>
     @endif
     <div class="row">
         @foreach($block->items as $item)
