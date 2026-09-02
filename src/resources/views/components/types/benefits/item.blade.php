@@ -2,15 +2,15 @@
 @php($hasImage = $item->recordable->image_id)
 <div class="h-full flex flex-col">
     @if ($hasImage)
-        <div class="inline-block mb-indent md:mb-indent-double">
+        <div class="inline-block mb-indent-half md:mb-indent">
             <img src="{{ route('thumb-img', ['template' => 'benefit-record', 'filename' => $item->recordable->image->file_name]) }}"
                  alt="" class="rounded-base">
         </div>
     @elseif($hasGridImage)
-        <div class="inline-block mb-indent md:mb-indent-double h-[100px]"></div>
+        <div class="inline-block mb-indent-half md:mb-indent h-[100px]"></div>
     @endif
     @if ($item->title)
-        <h4 class="text-lg xs:text-xl font-semibold mb-indent">{{ $item->title }}</h4>
+        <h4 class="text-h4-mobile sm:text-h4 font-semibold mb-indent-half">{{ $item->title }}</h4>
     @endif
     @if ($item->recordable->description)
         <div class="prose xs:prose-lg max-w-none prose-p:leading-6">
